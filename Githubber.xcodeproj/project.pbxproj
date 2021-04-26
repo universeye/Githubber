@@ -14,6 +14,9 @@
 		BF7A367026343CC8003DB437 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7A366E26343CC8003DB437 /* LaunchScreen.storyboard */; };
 		BF7A367B26343CC9003DB437 /* GithubberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A367A26343CC9003DB437 /* GithubberTests.swift */; };
 		BF7A368626343CC9003DB437 /* GithubberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A368526343CC9003DB437 /* GithubberUITests.swift */; };
+		BF7A36A026366C92003DB437 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A369F26366C92003DB437 /* SearchViewController.swift */; };
+		BF7A36A526366CAE003DB437 /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */; };
+		BF7A36AA263699D4003DB437 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36A9263699D4003DB437 /* GFButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		BF7A368126343CC9003DB437 /* GithubberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7A368526343CC9003DB437 /* GithubberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubberUITests.swift; sourceTree = "<group>"; };
 		BF7A368726343CC9003DB437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF7A369F26366C92003DB437 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
+		BF7A36A9263699D4003DB437 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +105,10 @@
 			children = (
 				BF7A366326343CC5003DB437 /* AppDelegate.swift */,
 				BF7A366526343CC5003DB437 /* SceneDelegate.swift */,
+				BF7A36A9263699D4003DB437 /* GFButton.swift */,
 				BF7A366726343CC5003DB437 /* ViewController.swift */,
+				BF7A369F26366C92003DB437 /* SearchViewController.swift */,
+				BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */,
 				BF7A366C26343CC8003DB437 /* Assets.xcassets */,
 				BF7A366E26343CC8003DB437 /* LaunchScreen.storyboard */,
 				BF7A367126343CC8003DB437 /* Info.plist */,
@@ -256,6 +265,9 @@
 			files = (
 				BF7A366826343CC5003DB437 /* ViewController.swift in Sources */,
 				BF7A366426343CC5003DB437 /* AppDelegate.swift in Sources */,
+				BF7A36AA263699D4003DB437 /* GFButton.swift in Sources */,
+				BF7A36A526366CAE003DB437 /* FavoritesListVC.swift in Sources */,
+				BF7A36A026366C92003DB437 /* SearchViewController.swift in Sources */,
 				BF7A366626343CC5003DB437 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
