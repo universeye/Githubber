@@ -18,6 +18,7 @@
 		BF7A36A526366CAE003DB437 /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */; };
 		BF7A36AA263699D4003DB437 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36A9263699D4003DB437 /* GFButton.swift */; };
 		BF7A36B126369EAD003DB437 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36B026369EAD003DB437 /* GFTextField.swift */; };
+		BF7A36B62636A32B003DB437 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36B52636A32B003DB437 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 		BF7A36A9263699D4003DB437 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		BF7A36B026369EAD003DB437 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		BF7A36B52636A32B003DB437 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +111,12 @@
 				BF7A366526343CC5003DB437 /* SceneDelegate.swift */,
 				BF7A36A9263699D4003DB437 /* GFButton.swift */,
 				BF7A36B026369EAD003DB437 /* GFTextField.swift */,
-				BF7A366726343CC5003DB437 /* ViewController.swift */,
 				BF7A369F26366C92003DB437 /* SearchViewController.swift */,
 				BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */,
 				BF7A366C26343CC8003DB437 /* Assets.xcassets */,
+				BF7A36B52636A32B003DB437 /* Constants.swift */,
 				BF7A366E26343CC8003DB437 /* LaunchScreen.storyboard */,
+				BF7A366726343CC5003DB437 /* ViewController.swift */,
 				BF7A367126343CC8003DB437 /* Info.plist */,
 			);
 			path = Githubber;
@@ -273,6 +276,7 @@
 				BF7A36A026366C92003DB437 /* SearchViewController.swift in Sources */,
 				BF7A366626343CC5003DB437 /* SceneDelegate.swift in Sources */,
 				BF7A36B126369EAD003DB437 /* GFTextField.swift in Sources */,
+				BF7A36B62636A32B003DB437 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
