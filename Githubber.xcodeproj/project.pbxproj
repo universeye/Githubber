@@ -17,6 +17,7 @@
 		BF7A36A026366C92003DB437 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A369F26366C92003DB437 /* SearchViewController.swift */; };
 		BF7A36A526366CAE003DB437 /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */; };
 		BF7A36AA263699D4003DB437 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36A9263699D4003DB437 /* GFButton.swift */; };
+		BF7A36B126369EAD003DB437 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36B026369EAD003DB437 /* GFTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		BF7A369F26366C92003DB437 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 		BF7A36A9263699D4003DB437 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
+		BF7A36B026369EAD003DB437 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				BF7A366326343CC5003DB437 /* AppDelegate.swift */,
 				BF7A366526343CC5003DB437 /* SceneDelegate.swift */,
 				BF7A36A9263699D4003DB437 /* GFButton.swift */,
+				BF7A36B026369EAD003DB437 /* GFTextField.swift */,
 				BF7A366726343CC5003DB437 /* ViewController.swift */,
 				BF7A369F26366C92003DB437 /* SearchViewController.swift */,
 				BF7A36A426366CAE003DB437 /* FavoritesListVC.swift */,
@@ -269,6 +272,7 @@
 				BF7A36A526366CAE003DB437 /* FavoritesListVC.swift in Sources */,
 				BF7A36A026366C92003DB437 /* SearchViewController.swift in Sources */,
 				BF7A366626343CC5003DB437 /* SceneDelegate.swift in Sources */,
+				BF7A36B126369EAD003DB437 /* GFTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
