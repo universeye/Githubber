@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//import SwiftUI
 
 class SearchViewController: UIViewController {
     
@@ -38,12 +37,12 @@ class SearchViewController: UIViewController {
     //this gets called everytime the view appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     //MARK: - Functional
 
-    func createDismissKBTappedGesture() {
+    func createDismissKBTappedGesture() { //tap anywhere, the keyboard dismiss
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
@@ -61,8 +60,8 @@ class SearchViewController: UIViewController {
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
-    
-//    @objc func pushAlertView() {
+//Push to SwiftUI alert view testing.
+//    func pushAlertView() {
 //        let alertView = UIHostingController(rootView: AlertView())
 //        navigationController?.pushViewController(alertView, animated: true)
 //
@@ -122,11 +121,8 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("Did tap return")
         view.endEditing(true)
         pushFollowerListVC()
-        //pushAlertView()
-        //pushToAlertVC()
         return true
     }
     
