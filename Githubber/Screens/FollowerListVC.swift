@@ -17,11 +17,13 @@ class FollowerListVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         // Do any additional setup after loading the view.
         
-        NetworkManager.shared.getFollowers(for: username, page: 1) { (followers, error) -> (Void) in
-            if let followerss = followers {
-                print(followerss[0].avatarUrl)
-            } else {
-                print("no followers")
+        NetworkManager.shared.getFollowers(for: username, page: 1) { results in
+            
+            switch results {
+            case .success(let followers):
+                print(followers.count)
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Bad Stuff Happened😵", messgae: error.rawValue, buttonTitle: "Ok")
             }
         }
     }

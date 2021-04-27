@@ -29,6 +29,7 @@
 		BF7A36FA2637DC62003DB437 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A36F92637DC62003DB437 /* Follower.swift */; };
 		BF7A37052637DD2F003DB437 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A37042637DD2F003DB437 /* User.swift */; };
 		BF7A370B2637E6B9003DB437 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A370A2637E6B9003DB437 /* NetworkManager.swift */; };
+		BF7A371926386005003DB437 /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A371826386005003DB437 /* GFError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		BF7A36F92637DC62003DB437 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		BF7A37042637DD2F003DB437 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BF7A370A2637E6B9003DB437 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BF7A371826386005003DB437 /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				BF7A36F02637CF94003DB437 /* Components */,
 				BF7A36EC2637CF7B003DB437 /* Screens */,
 				BF7A36F42637CFCE003DB437 /* Extensios */,
+				BF7A371726385FDC003DB437 /* Utilities */,
 				BF7A366C26343CC8003DB437 /* Assets.xcassets */,
 				BF7A366E26343CC8003DB437 /* LaunchScreen.storyboard */,
 				BF7A36CA2636ECDB003DB437 /* AlertView.swift */,
@@ -208,6 +211,14 @@
 				BF7A370A2637E6B9003DB437 /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		BF7A371726385FDC003DB437 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BF7A371826386005003DB437 /* GFError.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +367,7 @@
 				BF7A366626343CC5003DB437 /* SceneDelegate.swift in Sources */,
 				BF7A36B126369EAD003DB437 /* GFTextField.swift in Sources */,
 				BF7A36C62636EB4E003DB437 /* String+Extension.swift in Sources */,
+				BF7A371926386005003DB437 /* GFError.swift in Sources */,
 				BF7A36B62636A32B003DB437 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
