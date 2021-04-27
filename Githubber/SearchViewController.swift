@@ -6,18 +6,28 @@
 //
 
 import UIKit
+//import SwiftUI
 
 class SearchViewController: UIViewController {
     
+    //MARK: - Properties
+
     //initialize objects needed
     let logoImageView = UIImageView()
     let userNameTextField = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers") //CTA button
     let assets = Assets() //for constants
     
+    var isUsernameEntered: Bool {
+        !userNameTextField.text!.isEmpty
+    }
+    
+    //MARK: - Appss LifeCycle
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .systemBackground
         configureLogoImageView()
         configureTextField()
@@ -31,11 +41,34 @@ class SearchViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
-    
+    //MARK: - Functional
+
     func createDismissKBTappedGesture() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
+    
+    @objc func pushFollowerListVC() { //push a new viewController on to the stack
+        
+        guard isUsernameEntered else {
+            print("User name is empty")
+            presentGFAlertOnMainThread(title: "Empty Username", messgae: "Please answer a username", buttonTitle: "Fuck")
+            return
+        }
+        let followerListVC = FollowerListVC()
+        followerListVC.username = userNameTextField.text
+        followerListVC.title = userNameTextField.text
+        navigationController?.pushViewController(followerListVC, animated: true)
+    }
+    
+    
+//    @objc func pushAlertView() {
+//        let alertView = UIHostingController(rootView: AlertView())
+//        navigationController?.pushViewController(alertView, animated: true)
+//
+//    }
+    //MARK: - UI Configuration
+
     
     func configureLogoImageView() {
         //addSubView = grabbing a UIImageView out of the library, dragging it on to viewController and dropping it
@@ -55,6 +88,7 @@ class SearchViewController: UIViewController {
     
     func configureTextField() {
         view.addSubview(userNameTextField)
+        userNameTextField.delegate = self //self means searchVC
         
         NSLayoutConstraint.activate([
             userNameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
@@ -67,6 +101,11 @@ class SearchViewController: UIViewController {
     func configureCTAButton() {
         view.addSubview(callToActionButton)
         
+        
+        //Button pressed here
+        callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
+        
+        
         NSLayoutConstraint.activate([
             callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             callToActionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -77,7 +116,18 @@ class SearchViewController: UIViewController {
 }
 
 
+//MARK: - UITextFieldDelegate
+
+
 extension SearchViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Did tap return")
+        view.endEditing(true)
+        pushFollowerListVC()
+        //pushAlertView()
+        //pushToAlertVC()
+        return true
+    }
     
 }
