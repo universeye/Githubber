@@ -32,6 +32,7 @@
 		BF7A371926386005003DB437 /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A371826386005003DB437 /* GFError.swift */; };
 		BF7A372826387C54003DB437 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A372726387C54003DB437 /* FollowerCell.swift */; };
 		BF7A372D26387CEE003DB437 /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A372C26387CEE003DB437 /* GFAvatarImageView.swift */; };
+		BF7A373226390FE7003DB437 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A373126390FE7003DB437 /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		BF7A371826386005003DB437 /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
 		BF7A372726387C54003DB437 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		BF7A372C26387CEE003DB437 /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		BF7A373126390FE7003DB437 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 			children = (
 				BF7A36B52636A32B003DB437 /* Constants.swift */,
 				BF7A371826386005003DB437 /* GFError.swift */,
+				BF7A373126390FE7003DB437 /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				BF7A370B2637E6B9003DB437 /* NetworkManager.swift in Sources */,
 				BF7A36D82636F15E003DB437 /* GFBodyLable.swift in Sources */,
 				BF7A36D32636EFEF003DB437 /* GFTitleLabel.swift in Sources */,
+				BF7A373226390FE7003DB437 /* UIHelper.swift in Sources */,
 				BF7A36C12636D7F8003DB437 /* FollowerListVC.swift in Sources */,
 				BF7A36FA2637DC62003DB437 /* Follower.swift in Sources */,
 				BF7A36E52637CA9F003DB437 /* UIViewController+Extension.swift in Sources */,

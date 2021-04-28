@@ -8,8 +8,8 @@
 import Foundation
 
 //0.login
-struct Follower: Decodable {
+struct Follower: Decodable, Hashable {
     let login: String
     let id: Int
-    let avatarUrl: URL
+    let avatarUrl: String
 }

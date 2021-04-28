@@ -5,12 +5,13 @@
 //  Created by Terry Kuo on 2021/4/27.
 //
 
-import Foundation
-
+import UIKit
+//vmanot
 class NetworkManager {
     
     static let shared = NetworkManager()
-    let baseURL = "https://api.github.com/users/"
+    private let baseURL = "https://api.github.com/users/"
+    let cache = NSCache<NSString, UIImage>()
     
     private init () {
         
@@ -41,7 +42,7 @@ class NetworkManager {
                 completion(.failure(.invalidResponse))
                 return
             }
-            print(response.statusCode)
+            print("HTTP Response.statusCode is \(response.statusCode)")
             guard let data = data else {
                 print("error 4")
                 completion(.failure(.invalidResponse))
