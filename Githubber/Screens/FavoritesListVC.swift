@@ -12,7 +12,7 @@ class FavoritesListVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemBackground
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

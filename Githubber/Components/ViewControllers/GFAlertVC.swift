@@ -12,17 +12,17 @@ class GFAlertVC: UIViewController {
     
     //MARK: - Properties
 
-    let containerView = UIView()
+    private let containerView = UIView()
     private let assets = Assets()
     
-    let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
-    let messageLabel = GFBodyLable(textAlignment: .center)
-    let actionButton = GFButton(backgroundColor: .systemPink, title: "Ok")
+    private let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
+    private let messageLabel = GFBodyLable(textAlignment: .center)
+    private let actionButton = GFButton(backgroundColor: .systemPink, title: "Ok")
 
     
-    var alertTitle: String?
-    var message: String?
-    var buttonTitle: String?
+    private var alertTitle: String?
+    private var message: String?
+    private var buttonTitle: String?
     
     //MARK: - Initializers
 
@@ -61,7 +61,7 @@ class GFAlertVC: UIViewController {
     
     //MARK: - UI Configuration
 
-    func configureContainerView() {
+    private func configureContainerView() {
         view.addSubview(containerView)
         containerView.backgroundColor = .systemBackground
         containerView.layer.cornerRadius = 16
@@ -78,7 +78,7 @@ class GFAlertVC: UIViewController {
     }
     
     
-    func configureTitleLabel() {
+    private func configureTitleLabel() {
         containerView.addSubview(titleLabel)
     
         titleLabel.text = alertTitle ?? "Something went wrong"
@@ -91,7 +91,7 @@ class GFAlertVC: UIViewController {
         ])
     }
     
-    func configureActionButton() {
+    private func configureActionButton() {
         containerView.addSubview(actionButton)
         
         actionButton.setTitle(buttonTitle ?? "Ok" , for: .normal)
@@ -106,7 +106,7 @@ class GFAlertVC: UIViewController {
     }
     
     
-    func configureMessageLabel() {
+    private func configureMessageLabel() {
         containerView.addSubview(messageLabel)
         
         messageLabel.text = message ?? "Unable to complete request"

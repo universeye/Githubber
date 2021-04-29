@@ -12,12 +12,12 @@ class SearchViewController: UIViewController {
     //MARK: - Properties
 
     //initialize objects needed
-    let logoImageView = UIImageView()
-    let userNameTextField = GFTextField()
-    let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers") //CTA button
-    let assets = Assets() //for constants
+    private let logoImageView = UIImageView()
+    private let userNameTextField = GFTextField()
+    private let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers") //CTA button
+    private let assets = Assets() //for constants
     
-    var isUsernameEntered: Bool {
+    private var isUsernameEntered: Bool {
         !userNameTextField.text!.isEmpty
     }
     
@@ -42,12 +42,12 @@ class SearchViewController: UIViewController {
     
     //MARK: - Functional
 
-    func createDismissKBTappedGesture() { //tap anywhere, the keyboard dismiss
+    private func createDismissKBTappedGesture() { //tap anywhere, the keyboard dismiss
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
     
-    @objc func pushFollowerListVC() { //push a new viewController on to the stack
+    @objc private func pushFollowerListVC() { //push a new viewController on to the stack
         
         guard isUsernameEntered else {
             print("User name is empty")
@@ -69,7 +69,7 @@ class SearchViewController: UIViewController {
     //MARK: - UI Configuration
 
     
-    func configureLogoImageView() {
+    private func configureLogoImageView() {
         //addSubView = grabbing a UIImageView out of the library, dragging it on to viewController and dropping it
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ class SearchViewController: UIViewController {
     }
     
     
-    func configureTextField() {
+    private func configureTextField() {
         view.addSubview(userNameTextField)
         userNameTextField.delegate = self //self means searchVC
         
@@ -97,7 +97,7 @@ class SearchViewController: UIViewController {
         ])
     }
     
-    func configureCTAButton() {
+    private func configureCTAButton() {
         view.addSubview(callToActionButton)
         
         
