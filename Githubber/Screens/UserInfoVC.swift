@@ -20,6 +20,9 @@ class UserInfoVC: UIViewController {
     let cardView1 = UIView()
     let cardView2 = UIView()
     let dateLabel = GFBodyLable(textAlignment: .center)
+    let upadateDateLabel = GFBodyLable(textAlignment: .center)
+    let githublogo = UIImageView()
+    
     weak var delegate: followerListVCDelegate!
     
     private let assets = Assets()
@@ -58,7 +61,7 @@ class UserInfoVC: UIViewController {
     }
     
     private func getUserInfo(userName: String) {
-        print("Getting \(userName)'s userInfo..")
+        //print("Getting \(userName)'s userInfo..")
         NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -87,14 +90,15 @@ class UserInfoVC: UIViewController {
         self.addChildVC(childViewC: repoItemVC, to: self.cardView1)
         self.addChildVC(childViewC: followerItemVC, to: self.cardView2)
         
-        self.dateLabel.text = "Githun since \(user.createdAt.convertToDisplayFormat())"
+        self.dateLabel.text = "Github since \(user.createdAt.convertToDisplayFormat())"
+        self.upadateDateLabel.text = "Last updated: \(user.updatedAt.convertToUpdateDateFormat())"
     }
     //MARK: - UIStuff
 
     
     func layOutUI() {
         
-        let userInfoViewArray = [headerView, cardView1, cardView2, dateLabel]
+        let userInfoViewArray = [headerView, cardView1, cardView2, dateLabel, upadateDateLabel]
         let padding: CGFloat = 20
         let cardHeight: CGFloat = 140
          
@@ -109,7 +113,9 @@ class UserInfoVC: UIViewController {
             ])
         }
         
-        
+        view.addSubview(githublogo)
+        githublogo.translatesAutoresizingMaskIntoConstraints = false
+        githublogo.image = UIImage(named: "avatar-placeholder")
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -122,7 +128,15 @@ class UserInfoVC: UIViewController {
             cardView2.heightAnchor.constraint(equalToConstant: cardHeight),
             
             dateLabel.topAnchor.constraint(equalTo: cardView2.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+            dateLabel.heightAnchor.constraint(equalToConstant: 18),
+            
+            githublogo.topAnchor.constraint(equalTo: cardView2.bottomAnchor, constant: padding - 2),
+            githublogo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding + 2),
+            githublogo.widthAnchor.constraint(equalToConstant: 25),
+            githublogo.heightAnchor.constraint(equalToConstant: 25),
+            
+            upadateDateLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: padding),
+            upadateDateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
@@ -153,10 +167,13 @@ class UserInfoVC: UIViewController {
     }
 }
 
+
+//MARK: - Extension
+
 extension UserInfoVC: UserInfoVCDelegate {
     func didTapGithubProfileBut(for user: User) {
         //show safari viewController
-        print("did tapped github profile")
+        //print("did tapped github profile")
         guard let url = URL(string: user.htmlUrl) else {
             presentGFAlertOnMainThread(title: "Invalid URL", messgae: "The url attached to this url is invalid", buttonTitle: "Ok")
             return
@@ -174,7 +191,7 @@ extension UserInfoVC: UserInfoVCDelegate {
         dismissVC()
         //tell followerListVC the new User
         delegate.didRequestFollowers(for: user.login)
-        print("did tapped get followers")
+        //print("did tapped get followers")
     }
     
     

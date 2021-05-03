@@ -20,7 +20,7 @@ class NetworkManager {
     func getFollowers(for username: String, page: Int, completion: @escaping (Result<[Follower], GFError>) -> (Void)) {
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
         
-        print("endpoint is \(endpoint)")
+        //print("endpoint is \(endpoint)")
         //URL Error handling
         guard let url = URL(string: endpoint) else {
             print("error 1")
@@ -42,7 +42,7 @@ class NetworkManager {
                 completion(.failure(.invalidResponse))
                 return
             }
-            print("HTTP Response.statusCode is \(response.statusCode)")
+            //print("HTTP Response.statusCode is \(response.statusCode)")
             guard let data = data else {
                 print("error 4")
                 completion(.failure(.invalidResponse))

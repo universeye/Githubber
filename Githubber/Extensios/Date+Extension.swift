@@ -16,4 +16,10 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func convertToMonthDayYear() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        
+        return dateFormatter.string(from: self)
+    }
 }
