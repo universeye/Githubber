@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol followerListVCDelegate: AnyObject {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListVC: UIViewController {
     
     
@@ -147,6 +151,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         
         let follower = isSearching ? filteredFollowers[indexPath.item] : followers[indexPath.item]
         let destinationVC = UserInfoVC()
+        destinationVC.delegate = self
         destinationVC.userName = follower.login
         let navController = UINavigationController(rootViewController: destinationVC)
         present(navController, animated: true)
@@ -169,5 +174,22 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         updateData(on: followers)
+    }
+}
+
+
+//MARK: - followerListVCDelegate
+
+
+extension FollowerListVC: followerListVCDelegate {
+    func didRequestFollowers(for username: String) {
+        //get followers for that user
+        self.username = username
+        title = username //reset navigationBar title
+        pageCount = 1 //clear pageCount
+        followers.removeAll() //clear followers array
+        filteredFollowers.removeAll() //clear filteredFollowers array
+        collectionView.setContentOffset(.zero, animated: true) //scroll to the top
+        getFollowers(username: username, page: pageCount)
     }
 }
