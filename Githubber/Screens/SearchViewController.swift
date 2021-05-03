@@ -51,7 +51,7 @@ class SearchViewController: UIViewController {
         
         guard isUsernameEntered else {
             print("User name is empty")
-            presentGFAlertOnMainThread(title: "Empty Username", messgae: "Please answer a username", buttonTitle: "Fuck")
+            presentGFAlertOnMainThread(title: "Empty Username", messgae: "Please answer a username", buttonTitle: "Ok")
             return
         }
         let followerListVC = FollowerListVC()

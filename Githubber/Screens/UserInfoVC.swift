@@ -62,8 +62,10 @@ class UserInfoVC: UIViewController {
     
     private func getUserInfo(userName: String) {
         //print("Getting \(userName)'s userInfo..")
+        showLoadingView()
         NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
             guard let self = self else { return }
+            self.dimissLoadingView()
             switch result {
             
             case .success(let user):

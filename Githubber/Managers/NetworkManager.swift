@@ -71,7 +71,7 @@ class NetworkManager {
     func getUserInfo(for username: String, completion: @escaping (Result<User, GFError>) -> (Void)) {
         let endpoint = baseURL + "\(username)"
         
-        print("endpoint is \(endpoint)")
+        //print("endpoint is \(endpoint)")
         //URL Error handling
         guard let url = URL(string: endpoint) else {
             print("error 1")
@@ -93,7 +93,7 @@ class NetworkManager {
                 completion(.failure(.invalidResponse))
                 return
             }
-            print("HTTP Response.statusCode is \(response.statusCode)")
+            //print("HTTP Response.statusCode is \(response.statusCode)")
             guard let data = data else {
                 print("error 4")
                 completion(.failure(.invalidResponse))
