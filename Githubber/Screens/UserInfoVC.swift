@@ -16,6 +16,9 @@ class UserInfoVC: UIViewController {
     
     //MARK: - Properties
 
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+    
     let headerView = UIView()
     let cardView1 = UIView()
     let cardView2 = UIView()
@@ -44,7 +47,7 @@ class UserInfoVC: UIViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = doneButton
         
-        
+        configureScrollView()
         
         layOutUI()
         
@@ -95,6 +98,18 @@ class UserInfoVC: UIViewController {
         self.dateLabel.text = "Github since \(user.createdAt.convertToDisplayFormat())"
         self.upadateDateLabel.text = "Last updated: \(user.updatedAt.convertToUpdateDateFormat())"
     }
+    
+    
+    func configureScrollView() {
+        view.addSubviews(scrollView)
+        scrollView.addSubviews(contentView)
+        
+        scrollView.pinToEdge(of: view)
+        contentView.pinToEdge(of: scrollView)
+        
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 670).isActive = true
+    }
     //MARK: - UIStuff
 
     
@@ -105,13 +120,13 @@ class UserInfoVC: UIViewController {
         let cardHeight: CGFloat = 140
          
         for itemview in userInfoViewArray {
-            view.addSubview(itemview)
+            contentView.addSubview(itemview)
             itemview.translatesAutoresizingMaskIntoConstraints = false
             //itemview.backgroundColor = .systemBackground
             
             NSLayoutConstraint.activate([
-                itemview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-                itemview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+                itemview.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+                itemview.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
             ])
         }
         
@@ -120,7 +135,7 @@ class UserInfoVC: UIViewController {
         githublogo.image = UIImage(named: "avatar-placeholder")
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 210),
             
             cardView1.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
@@ -189,7 +204,7 @@ extension UserInfoVC: ItemInfoVCDelegate {
             presentGFAlertOnMainThread(title: "No Followers", messgae: "This user has no followers", buttonTitle: "Ok")
             return
         }
-        //dismissVC
+        
         dismissVC()
         //tell followerListVC the new User
         delegate.didRequestFollowers(for: user.login)
