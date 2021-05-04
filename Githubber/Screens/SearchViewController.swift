@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     private let userNameTextField = GFTextField()
     private let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers") //CTA button
     private let assets = Assets() //for constants
+    private var logoImageViewTopConstraint = NSLayoutConstraint()
     
     private var isUsernameEntered: Bool {
         !userNameTextField.text!.isEmpty
@@ -37,13 +38,14 @@ class SearchViewController: UIViewController {
     //this gets called everytime the view appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        userNameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     //MARK: - Functional
 
     private func createDismissKBTappedGesture() { //tap anywhere, the keyboard dismiss
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
     
@@ -54,9 +56,9 @@ class SearchViewController: UIViewController {
             presentGFAlertOnMainThread(title: "Empty Username", messgae: "Please answer a username", buttonTitle: "Ok")
             return
         }
-        let followerListVC = FollowerListVC()
-        followerListVC.username = userNameTextField.text
-        followerListVC.title = userNameTextField.text
+        
+        userNameTextField.resignFirstResponder()
+        let followerListVC = FollowerListVC(username: userNameTextField.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
@@ -76,8 +78,13 @@ class SearchViewController: UIViewController {
         if let image = UIImage(named: assets.ghlogo) { //set the image to gh-logo
             logoImageView.image = image
         }
+        
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
+        logoImageViewTopConstraint.isActive = true
+        
         NSLayoutConstraint.activate([ //at least 4 constraints on an object
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80), //Y
+            //logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80), //Y
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor), //X
             logoImageView.heightAnchor.constraint(equalToConstant: 200), //Height
             logoImageView.widthAnchor.constraint(equalToConstant: 200) //Width

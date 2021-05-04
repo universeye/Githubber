@@ -23,29 +23,28 @@ enum PersistanceManager {
         retrieveFavorites { result in
             switch result {
             
-            case .success(let favorite):
+            case .success(var favorite):
                 
-                var retrievedFavorites = favorite
                 
                 switch actionType {
                 case .add:
                     //check if you already add the user
-                    guard !retrievedFavorites.contains(favorites) else {
+                    guard !favorite.contains(favorites) else {
                         completion(.alreadyInFav)
                         return
                     }
                     //if not, add the user you've passed in to the retrievedFavorites array
-                    retrievedFavorites.append(favorites)
+                    favorite.append(favorites)
                     
                     
                 case .remove:
-                    retrievedFavorites.removeAll {
+                    favorite.removeAll {
                         $0.login == favorites.login
                     }
                 }
                 
                 //save the array to user defaults
-                completion(saveToFavorites(favorites: retrievedFavorites))
+                completion(saveToFavorites(favorites: favorite))
                 
             case .failure(let error):
                 completion(error)

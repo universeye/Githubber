@@ -8,9 +8,9 @@
 import UIKit
 
 protocol UserInfoVCDelegate: AnyObject {
-    func didTapGithubProfileBut(for user: User)
-    func didTapGetFollowersBut(for user: User)
+    func didRequestFollowers(for username: String)
 }
+
 
 class UserInfoVC: UIViewController {
     
@@ -23,7 +23,7 @@ class UserInfoVC: UIViewController {
     let upadateDateLabel = GFBodyLable(textAlignment: .center)
     let githublogo = UIImageView()
     
-    weak var delegate: followerListVCDelegate!
+    weak var delegate: UserInfoVCDelegate!
     
     private let assets = Assets()
     var userName : String?
@@ -121,7 +121,7 @@ class UserInfoVC: UIViewController {
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180),
+            headerView.heightAnchor.constraint(equalToConstant: 210),
             
             cardView1.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             cardView1.heightAnchor.constraint(equalToConstant: cardHeight),
@@ -130,7 +130,7 @@ class UserInfoVC: UIViewController {
             cardView2.heightAnchor.constraint(equalToConstant: cardHeight),
             
             dateLabel.topAnchor.constraint(equalTo: cardView2.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18),
+            dateLabel.heightAnchor.constraint(equalToConstant: 20),
             
             githublogo.topAnchor.constraint(equalTo: cardView2.bottomAnchor, constant: padding - 2),
             githublogo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding + 2),
@@ -138,7 +138,7 @@ class UserInfoVC: UIViewController {
             githublogo.heightAnchor.constraint(equalToConstant: 25),
             
             upadateDateLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: padding),
-            upadateDateLabel.heightAnchor.constraint(equalToConstant: 18)
+            upadateDateLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
@@ -172,7 +172,7 @@ class UserInfoVC: UIViewController {
 
 //MARK: - Extension
 
-extension UserInfoVC: UserInfoVCDelegate {
+extension UserInfoVC: ItemInfoVCDelegate {
     func didTapGithubProfileBut(for user: User) {
         //show safari viewController
         //print("did tapped github profile")

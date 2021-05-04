@@ -12,7 +12,7 @@ class GFAlertVC: UIViewController {
     
     //MARK: - Properties
 
-    private let containerView = UIView()
+    private let containerView = GFContainerView()
     private let assets = Assets()
     
     private let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
@@ -61,13 +61,9 @@ class GFAlertVC: UIViewController {
     
     //MARK: - UI Configuration
 
+    
     private func configureContainerView() {
         view.addSubview(containerView)
-        containerView.backgroundColor = .systemBackground
-        containerView.layer.cornerRadius = 16
-        containerView.layer.borderWidth = 2
-        containerView.layer.borderColor = UIColor.white.cgColor
-        containerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor), //center vertically
