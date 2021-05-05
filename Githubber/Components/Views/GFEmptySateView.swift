@@ -39,15 +39,11 @@ class GFEmptySateView: UIView {
         
         
         let labelCenterYConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -100 : -150
-        let messageLabelCenterYConstraint = messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor,constant: labelCenterYConstant)
-        messageLabelCenterYConstraint.isActive = true
         
         let logoImageCenterYConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 60 : 40
-        let logoImageViewBottomConstraint = emptySateImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: logoImageCenterYConstant)
-        logoImageViewBottomConstraint.isActive = true
         
         NSLayoutConstraint.activate([
-            //messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor,constant: -150),
+            messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor,constant: labelCenterYConstant),
             messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 40),
             messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -40),
             messageLabel.heightAnchor.constraint(equalToConstant: 200), //hard code this
@@ -55,7 +51,7 @@ class GFEmptySateView: UIView {
             emptySateImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3), //30% larger than the width of the image
             emptySateImageView.heightAnchor.constraint(equalTo: emptySateImageView.widthAnchor),
             emptySateImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 170),
-            //emptySateImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 40)
+            emptySateImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: logoImageCenterYConstant)
         ])
         
     }

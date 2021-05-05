@@ -66,22 +66,27 @@ class FollowerListVC: UIViewController {
             self.dimissLoadingView()
             switch results {
             case .success(let followers):
-                print("followers.count is :\(followers.count)")
-                if followers.count < 100 {
-                    self.hasMoreFollowers = false
-                }
-                self.followers.append(contentsOf: followers) //strong reference to self which is FollwerListVC
-                if self.followers.isEmpty {
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: "No Followers", in: self.view)
-                    }
-                    
-                }
-                self.updateData(on: self.followers)
+                self.updateUI(with: followers)
+                
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened😵", messgae: error.rawValue, buttonTitle: "Ok")
             }
         }
+    }
+    
+    
+    func updateUI(with followers: [Follower]) {
+        if followers.count < 100 {
+            self.hasMoreFollowers = false
+        }
+        self.followers.append(contentsOf: followers) //strong reference to self which is FollwerListVC
+        if self.followers.isEmpty {
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: "No Followers", in: self.view)
+            }
+            
+        }
+        self.updateData(on: self.followers)
     }
     
     private func configureDataSource() {
