@@ -20,13 +20,13 @@ UIKit, This app shows the followers of github account by searching the username,
 <img src= "ReadmeSources/gihubberss3.png" width = 40% height = 40%>   <img src= "ReadmeSources/gihubberss4.png" width = 40% height = 40%>
 
 
-**Error Screen**
+**Error Screen**    **Empty Followers/Favorites Screen**
 
-<img src= "ReadmeSources/errorscreen.png" width = 40% height = 40%>
+<img src= "ReadmeSources/errorscreen.png" width = 40% height = 40%>.  <img src= "ReadmeSources/emptystate.png" width = 40% height = 40%>
 
-**Empty Followers/Favorites Screen**
 
-<img src= "ReadmeSources/emptystate.png" width = 40% height = 40%>
+
+
 
 # Features
 
