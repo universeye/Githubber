@@ -167,7 +167,7 @@ class FollowerListVC: UIViewController {
         searchController.searchResultsUpdater = self //set the delegate to self
         searchController.searchBar.placeholder = "Search for a user name"
         navigationItem.searchController = searchController
-        //searchController.obscuresBackgroundDuringPresentation = false //CollectionView black overlay
+        searchController.obscuresBackgroundDuringPresentation = false //CollectionView black overlay
     }
 }
 //MARK: - UICollectionViewDelegate
@@ -219,10 +219,10 @@ extension FollowerListVC: UISearchResultsUpdating {
         updateData(on: filteredFollowers)
     }
     
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        isSearching = false
-//        updateData(on: followers)
-//    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        updateData(on: followers)
+    }
 }
 
 
