@@ -66,21 +66,34 @@ class UserInfoVC: UIViewController {
     private func getUserInfo(userName: String) {
         //print("Getting \(userName)'s userInfo..")
         showLoadingView()
-        NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
-            guard let self = self else { return }
-            self.dimissLoadingView()
-            switch result {
-            
-            case .success(let user):
-                DispatchQueue.main.async {
-                    self.configureUIElement(with: user)
+        Task {
+            do {
+                let user = try await NetworkManager.shared.getUserInfoWithAsync(for: userName)
+                configureUIElement(with: user)
+            } catch {
+                if let gfError = error as? GFError {
+                    presentGFAlertOnMainThread(title: "Bad Stuff Happened😵", messgae: gfError.rawValue, buttonTitle: "Ok")
+                } else {
+                    presentDefaultError()
                 }
-                
-                
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Bad Stuff Happened 2😵", messgae: error.rawValue, buttonTitle: "Ok")
             }
         }
+        dimissLoadingView()
+//        NetworkManager.shared.getUserInfo(for: userName) { [weak self] result in
+//            guard let self = self else { return }
+//            self.dimissLoadingView()
+//            switch result {
+//
+//            case .success(let user):
+//                DispatchQueue.main.async {
+//                    self.configureUIElement(with: user)
+//                }
+//
+//
+//            case .failure(let error):
+//                self.presentGFAlertOnMainThread(title: "Bad Stuff Happened 2😵", messgae: error.rawValue, buttonTitle: "Ok")
+//            }
+//        }
     }
     
     func configureUIElement(with user: User) {
