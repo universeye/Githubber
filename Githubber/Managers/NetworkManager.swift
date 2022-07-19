@@ -13,9 +13,7 @@ class NetworkManager {
     private let baseURL = "https://api.github.com/users/"
     let cache = NSCache<NSString, UIImage>()
     
-    private init () {
-        
-    }
+    private init () {}
     
     func getFollowers(for username: String, page: Int, completion: @escaping (Result<[Follower], GFError>) -> (Void)) {
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
@@ -64,6 +62,21 @@ class NetworkManager {
         }
         
         task.resume()
+    }
+    
+    func getFollowersWithAsync(for username: String, page: Int) async throws -> [Follower] {
+        let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
+        
+        guard let url = URL(string: endpoint) else { throw GFError.invalidUserName }
+        let (data, response) = try await URLSession.shared.data(from: url)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw GFError.invalidResponse}
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        guard let decodedData = try? decoder.decode([Follower].self, from: data) else { throw GFError.failedToDecode }
+        
+        return decodedData
     }
     
     

@@ -60,18 +60,21 @@ class FollowerListVC: UIViewController {
     
     private func getFollowers(username: String, page: Int) {
         showLoadingView()
-        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] results in
-            
-            guard let self = self else { return }
-            self.dimissLoadingView()
-            switch results {
-            case .success(let followers):
-                self.updateUI(with: followers)
+
+        Task {
+            do {
+                let followers = try await NetworkManager.shared.getFollowersWithAsync(for: username, page: page)
+                updateUI(with: followers)
+            } catch {
                 
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Bad Stuff Happened😵", messgae: error.rawValue, buttonTitle: "Ok")
+                if let gfError = error as? GFError {
+                    presentGFAlertOnMainThread(title: "Bad Stuff Happened😵", messgae: gfError.rawValue, buttonTitle: "Ok")
+                } else {
+                    presentDefaultError()
+                }
             }
         }
+        dimissLoadingView()
     }
     
     
