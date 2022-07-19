@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
     //initialize objects needed
     private let logoImageView = UIImageView()
     private let userNameTextField = GFTextField()
-    private let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers") //CTA button
+    private let callToActionButton = GFButton(color: .systemGreen, title: "Get Followers", systemImageName: "person.3") //CTA button
     private let assets = Assets() //for constants
     
     private var isUsernameEntered: Bool {
