@@ -57,7 +57,7 @@ extension String {
             return "N/A"
         }
         
-        return date.convertToMonthYearFormat()
+        return date.convertToMonthYearFormat2()
     }
     
     func convertToUpdateDateFormat() -> String {

@@ -22,4 +22,10 @@ extension Date {
         
         return dateFormatter.string(from: self)
     }
+    
+    
+    //MARK: - new ios 15 formatter
+    func convertToMonthYearFormat2() -> String {
+        return formatted(.dateTime.month(.wide).year())
+    }
 }
