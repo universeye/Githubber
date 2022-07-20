@@ -12,6 +12,7 @@ class FollowerCell: UICollectionViewCell {
     
     private let avatarImageView = GFAvatarImageView(frame: .zero)
     private let userNameLabel = GFTitleLabel(textAlignment: .center, fontSize: 16)
+    private let assets = Assets()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +25,9 @@ class FollowerCell: UICollectionViewCell {
     
     func set(follower: Follower) {
         userNameLabel.text = follower.login
-        avatarImageView.downloadImage(from: follower.avatarUrl)
+        Task {
+            avatarImageView.image = await avatarImageView.downloadImageWithAsync(from: follower.avatarUrl) ?? UIImage(named: assets.placeHolderImage)
+        }
     }
     
     private func configure() {

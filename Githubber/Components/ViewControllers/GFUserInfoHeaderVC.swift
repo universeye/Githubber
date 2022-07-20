@@ -38,7 +38,10 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     func configureUIElement() {
-        avatarImageView.downloadImage(from: user.avatarUrl)
+//        avatarImageView.downloadImage(from: user.avatarUrl)
+        Task {
+            avatarImageView.image = await avatarImageView.downloadImageWithAsync(from: user.avatarUrl) ?? UIImage(named: assets.placeHolderImage)
+        }
         userNameLabel.text = user.login
         nameLabel.text = user.name ?? "n/a"
         locationLabel.text = user.location ?? "no location"
